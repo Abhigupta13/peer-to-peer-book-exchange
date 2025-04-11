@@ -1,0 +1,93 @@
+[
+    {
+      "title": "The White Tiger",
+      "author": "Aravind Adiga",
+      "genre": "Fiction",
+      "location": "Delhi",
+      "phoneNo": "9876543210",
+      "status": "Available",
+      "owner": "67f9236db1c7e6aa0f62422c"
+    },
+    {
+      "title": "Train to Pakistan",
+      "author": "Khushwant Singh",
+      "genre": "Historical Fiction",
+      "location": "Amritsar",
+      "phoneNo": "9123456780",
+      "status": "Rented",
+      "owner": "67f9236db1c7e6aa0f62422c"
+    },
+    {
+      "title": "The Guide",
+      "author": "R.K. Narayan",
+      "genre": "Fiction",
+      "location": "Chennai",
+      "phoneNo": "9988776655",
+      "status": "Available",
+      "owner": "67f9236db1c7e6aa0f62422c"
+    },
+    {
+      "title": "Wings of Fire",
+      "author": "A.P.J. Abdul Kalam",
+      "genre": "Autobiography",
+      "location": "Hyderabad",
+      "phoneNo": "9090909090",
+      "status": "Exchanged",
+      "owner": "67f9236db1c7e6aa0f62422c"
+    },
+    {
+      "title": "2 States",
+      "author": "Chetan Bhagat",
+      "genre": "Romance",
+      "location": "Ahmedabad",
+      "phoneNo": "9812345678",
+      "status": "Available",
+      "owner": "67f9236db1c7e6aa0f62422c"
+    },
+    {
+      "title": "To Kill a Mockingbird",
+      "author": "Harper Lee",
+      "genre": "Classic",
+      "location": "New York",
+      "phoneNo": "8765432109",
+      "status": "Available",
+      "owner": "67f9236db1c7e6aa0f62422c"
+    },
+    {
+      "title": "The Alchemist",
+      "author": "Paulo Coelho",
+      "genre": "Fiction",
+      "location": "San Francisco",
+      "phoneNo": "8098765432",
+      "status": "Rented",
+      "owner": "67f9236db1c7e6aa0f62422c"
+    },
+    {
+      "title": "The Da Vinci Code",
+      "author": "Dan Brown",
+      "genre": "Thriller",
+      "location": "Los Angeles",
+      "phoneNo": "8001234567",
+      "status": "Available",
+      "owner": "67f9236db1c7e6aa0f62422c"
+    },
+    {
+      "title": "Harry Potter and the Philosopher's Stone",
+      "author": "J.K. Rowling",
+      "genre": "Fantasy",
+      "location": "London",
+      "phoneNo": "8123456789",
+      "status": "Available",
+      "owner": "67f9236db1c7e6aa0f62422c"
+    },
+    {
+      "title": "The Subtle Art of Not Giving a F*ck",
+      "author": "Mark Manson",
+      "genre": "Self-help",
+      "location": "Bangalore",
+      "phoneNo": "9001112233",
+      "status": "Exchanged",
+      "owner": "67f9236db1c7e6aa0f62422c"
+    }
+  ]
+  
