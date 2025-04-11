@@ -8,7 +8,9 @@ const AddBook = () => {
   const navigate = useNavigate();
   
   // Retrieve userId from localStorage
-  const ownerId = localStorage.getItem('userId');
+  const owner = JSON.parse(localStorage.getItem('user'));
+  const ownerId = owner ? owner._id : null;
+
 
   const [bookData, setBookData] = useState({
     title: '',
