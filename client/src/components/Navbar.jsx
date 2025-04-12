@@ -19,8 +19,8 @@ const Navbar = () => {
 
       {user && (
         <div className="flex items-center space-x-4">
-          <span className="text-sm text-gray-300 mr-4">
-            Welcome, {user.name}
+          <span className="text-md text-gray-300 mr-4">
+          Welcome, <span className="text-blue-400">{user.name}</span>
           </span>
           <button
             onClick={handleLogout}

@@ -27,14 +27,28 @@ const MyBooks = () => {
   // Update Book Status
   const handleStatusChange = async (bookId, newStatus) => {
     try {
-      await axios.patch(`${BASE_URL}/api/book/${bookId}/status`, { 
-        status: newStatus 
+      await axios.patch(`${BASE_URL}/api/book/${bookId}/status`, {
+        status: newStatus
       });
-      
+
       fetchBooks();
     } catch (error) {
       console.error("Failed to update book status", error);
       alert("Failed to update book status");
+    }
+  };
+
+  // Delete Book
+  const handleDelete = async (bookId) => {
+    const confirmDelete = window.confirm("Are you sure you want to delete this book?");
+    if (!confirmDelete) return;
+
+    try {
+      await axios.delete(`${BASE_URL}/api/book/${bookId}`);
+      fetchBooks(); // Refresh list
+    } catch (error) {
+      console.error("Failed to delete book", error);
+      alert("Failed to delete the book.");
     }
   };
 
@@ -55,7 +69,7 @@ const MyBooks = () => {
       <Navbar />
       <div className="container mx-auto px-4 py-8">
         <h1 className="text-3xl font-bold mb-6 text-center">My Books</h1>
-        
+
         {books.length === 0 ? (
           <div className="text-center text-gray-600">
             You haven't added any books yet.
@@ -63,13 +77,13 @@ const MyBooks = () => {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {books.map((book) => (
-              <div 
-                key={book._id} 
+              <div
+                key={book._id}
                 className="bg-white rounded-lg shadow-md p-4"
               >
                 <BookCard book={book} />
-                
-                <div className="mt-4">
+
+                <div className="mt-4 grid grid-cols-2 gap-4">
                   <select
                     value={book.status}
                     onChange={(e) => handleStatusChange(book._id, e.target.value)}
@@ -79,6 +93,13 @@ const MyBooks = () => {
                     <option value="Rented">Rented</option>
                     <option value="Exchanged">Exchanged</option>
                   </select>
+
+                  <button
+                    onClick={() => handleDelete(book._id)}
+                    className="w-full bg-red-400 text-white py-2 rounded-md hover:bg-red-600 transition"
+                  >
+                    Delete Book
+                  </button>
                 </div>
               </div>
             ))}

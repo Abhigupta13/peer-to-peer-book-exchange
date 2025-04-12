@@ -69,8 +69,9 @@ const OwnerDashboard = () => {
         <div className="min-h-screen bg-gray-100">
             <Navbar />
             <div className="p-4">
-                <h1 className="text-2xl font-semibold mb-4 text-center text-gray-800">Book Exchange</h1>
-                
+                <h1 className="text-2xl font-semibold mb-4 text-center text-gray-800">
+                    Book Exchange <span className="text-sm text-gray-600">(You are an Owner)</span>
+                </h1>
 
                 <div className="mb-6 flex flex-wrap justify-center items-center gap-4">
             

@@ -104,3 +104,19 @@ export const getRentedBooks = async (req, res) => {
     res.status(500).json({ message: 'Failed to fetch rented books', error });
   }
 };
+
+export const deleteBook = async (req, res) => {
+  const { id } = req.params;
+  console.log(id)
+  try {
+    const book = await Book.findById(id);
+    if (!book) {
+      return res.status(404).json({ message: 'Book not found' });
+    }
+
+    await Book.findByIdAndDelete(id);
+    res.status(200).json({ message: 'Book deleted successfully' });
+  } catch (error) {
+    res.status(500).json({ message: 'Failed to delete book', error });
+  }
+};
