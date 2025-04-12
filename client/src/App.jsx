@@ -6,6 +6,7 @@ import SeekerDashboard from './pages/SeekerDashboard';
 import AddBook from './pages/AddBook';
 import { AuthProvider } from './context/AuthContext';
 import MyBooks from './pages/MyBooks';
+import MyRentedBooks from './pages/myRentedBooks';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Route path="/seeker-dashboard" element={<SeekerDashboard />} />
       <Route path="/add-book" element={<AddBook />} />
       <Route path="/my-books" element={<MyBooks />} />
+      <Route path="/my-rented-books" element={<MyRentedBooks/>} />
     </Routes>
     </AuthProvider>
   );

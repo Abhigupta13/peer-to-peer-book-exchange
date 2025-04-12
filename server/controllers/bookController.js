@@ -71,3 +71,36 @@ export const updateBookStatus = async (req, res) => {
     res.status(500).json({ message: 'Failed to update status', error });
   }
 };
+
+export const rentBook = async (req, res) => {
+  const { id } = req.params;
+  const { seekerId } = req.body; 
+  try {
+    const book = await Book.findById(id);
+    if (!book) return res.status(404).json({ message: 'Book not found' });
+
+    // Check if the book is available for rent
+    if (book.status !== 'Available') {
+      return res.status(400).json({ message: 'Book is not available for rent' });
+    }
+
+    // Update the book's status and set the seeker
+    book.status = 'Rented';
+    book.seeker = seekerId; // Set the seeker who is renting the book
+    await book.save();
+
+    res.status(200).json({ message: 'Book rented successfully', book });
+  } catch (error) {
+    res.status(500).json({ message: 'Failed to rent book', error });
+  }
+};
+export const getRentedBooks = async (req, res) => {
+  const { seekerId } = req.params;
+
+  try {
+    const rentedBooks = await Book.find({ seeker: seekerId, status: 'Rented' }).populate('owner', 'name email mobile');
+    res.status(200).json({ rentedBooks });
+  } catch (error) {
+    res.status(500).json({ message: 'Failed to fetch rented books', error });
+  }
+};

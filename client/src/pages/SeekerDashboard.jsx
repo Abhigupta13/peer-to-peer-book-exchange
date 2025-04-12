@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar';
 import BookCard from '../components/BookCard';
 import axios from 'axios';
 import { BASE_URL } from '../config/baseUrl';
+import { Link } from 'react-router-dom';
 
 const SeekerDashboard = () => {
     const [books, setBooks] = useState([]);
@@ -13,6 +14,7 @@ const SeekerDashboard = () => {
         location: '',
         status: ''
     });
+    const [openCardId, setOpenCardId] = useState(null);
 
     const fetchBooks = async () => {
         try {
@@ -64,15 +66,16 @@ const SeekerDashboard = () => {
         'Exchanged'
     ];
 
+    const handleCardClick = (bookId) => {
+        setOpenCardId(bookId);
+    };
+
     return (
         <div className="min-h-screen bg-gray-100">
             <Navbar />
             <div className="p-4">
                 <h1 className="text-2xl font-semibold mb-4 text-center text-gray-800">Book Exchange</h1>
-                
-
                 <div className="mb-6 flex flex-wrap justify-center items-center gap-4">
-            
                     <input 
                         type="text" 
                         placeholder="Search books (Title, Author, Genre, Location)"
@@ -80,7 +83,6 @@ const SeekerDashboard = () => {
                         onChange={(e) => setSearchTerm(e.target.value)}
                         className="w-full md:w-1/3 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
-
                     <select 
                         value={filters.genre}
                         onChange={(e) => setFilters(prev => ({...prev, genre: e.target.value}))}
@@ -91,7 +93,6 @@ const SeekerDashboard = () => {
                             <option key={genre} value={genre}>{genre}</option>
                         ))}
                     </select>
-
                     <select 
                         value={filters.location}
                         onChange={(e) => setFilters(prev => ({...prev, location: e.target.value}))}
@@ -102,7 +103,6 @@ const SeekerDashboard = () => {
                             <option key={location} value={location}>{location}</option>
                         ))}
                     </select>
-
                     <select 
                         value={filters.status}
                         onChange={(e) => setFilters(prev => ({...prev, status: e.target.value}))}
@@ -113,6 +113,11 @@ const SeekerDashboard = () => {
                             <option key={status} value={status}>{status}</option>
                         ))}
                     </select>
+                    <Link to="/my-rented-books">
+            <button className="bg-blue-500 text-white px-4 py-2 rounded">
+              My Rented Books
+            </button>
+          </Link>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
@@ -121,6 +126,8 @@ const SeekerDashboard = () => {
                             <BookCard 
                                 key={book._id} 
                                 book={book} 
+                                onCardClick={() => handleCardClick(book._id)}
+                                isOpen={openCardId === book._id}
                             />
                         ))
                     ) : (
